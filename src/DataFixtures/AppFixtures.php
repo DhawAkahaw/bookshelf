@@ -12,6 +12,8 @@ class AppFixtures extends Fixture
     {
         $books = [
             ['Les Misérables', 'Victor Hugo', true, 5],
+            ['1984', 'George Orwell', true, 4],
+            ['Le Petit Prince', 'Antoine de Saint-Exupéry', false, 0],
             // ... les trois autres livres : [titre, auteur, lu, note]
         ];
         foreach ($books as [$title, $author, $read, $rating]) {
@@ -21,7 +23,8 @@ class AppFixtures extends Fixture
             $book->setRead($read);
             $book->setRating($rating);
             $manager->persist($book);
+             $manager->flush();
+
         }
-        $manager->flush();
     }
 }
